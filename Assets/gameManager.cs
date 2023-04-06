@@ -11,6 +11,13 @@ public enum gameState
     pause
 }
 
+public enum setLang
+{
+    Kr,
+    En
+}
+
+
 public class gameManager : MonoBehaviour
 {
     private static gameManager selfcheck;
@@ -100,4 +107,18 @@ public class gameManager : MonoBehaviour
     {
         langSelected = (setLang)PlayerPrefs.GetInt("preferencesLang");
     }
+}
+
+[Flags]
+public enum unitDamageType
+{
+    Physic = 1,
+    Mental = 2
+}
+
+[Flags]
+public enum unitAttackType
+{
+    Single = 1,
+    Multi = 2
 }

@@ -3119,6 +3119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915664740}
+  - component: {fileID: 915664741}
   m_Layer: 0
   m_Name: indexManager
   m_TagString: Untagged
@@ -3141,6 +3142,22 @@ Transform:
   m_Father: {fileID: 1044607427}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915664741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915664739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66b4f2dd2ecc9a4b8af38e80a93917e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objScoList:
+  - {fileID: 1518504088345518377, guid: 5330dfd1d7b795b46bc843b791dd025a, type: 3}
+  - {fileID: 1518504088345518377, guid: 6917e17bd92423245862a01f647b77cf, type: 3}
+  - {fileID: 1518504088345518377, guid: f3c2f34fea193cc4d90c3a155a46c3b4, type: 3}
 --- !u!1 &932695447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,6 +3728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f001d040c2111478e9bca5f1972edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: 0
   langSelected: 0
   screenSelected: 0
   strScene:

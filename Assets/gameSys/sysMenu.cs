@@ -62,6 +62,14 @@ public class sysMenu : MonoBehaviour
         imgButtonReturnTitle.GetComponent<Button>().onClick.AddListener(() => gM().DoOpenSecne(0));
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape) && cavButtonMenu.gameObject.activeSelf)
+        {
+            DoOpenMenuPage(true);
+        }
+    }
+
     public void DoOpenMenuPage(bool i)
     {
         cavButtonMenu.gameObject.SetActive(!i);

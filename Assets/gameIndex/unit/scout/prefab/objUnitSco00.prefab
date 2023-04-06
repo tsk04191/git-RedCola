@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1518504088345518377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518504088345518376}
+  - component: {fileID: 1518504088345518391}
+  m_Layer: 0
+  m_Name: objUnitSco00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1518504088345518376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518504088345518377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1518504088345518391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518504088345518377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b490509ee3fca6e4b90ddf4db03c8684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strNameIndex: 7thFCCConcierge
+  strName: 
+  strDescription: 
+  sprImg: {fileID: 0}
+  intCost: 0
+  intPower: 1
+  _unitLang:
+  - strName: Name
+    txtTarget: {fileID: 0}
+    strKr: "7\uAE09 \uAD00\uB9AC\uC778"
+    strEn: 7th Grade Concierge
+  - strName: Description
+    txtTarget: {fileID: 0}
+    strKr: "\uC0B0\uB9BC \uAD00\uB9AC \uC704\uC6D0\uD68C\uC758 7\uAE09 \uAD00\uB9AC\uC778"
+    strEn: 7th grade concierge of FCC
