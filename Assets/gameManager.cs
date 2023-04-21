@@ -109,16 +109,15 @@ public class gameManager : MonoBehaviour
     }
 }
 
-[Flags]
 public enum unitDamageType
 {
-    Physic = 1,
-    Mental = 2
+    None = 1,
+    Physics = 2,
+    Mental = 4
 }
 
-[Flags]
 public enum unitAttackType
 {
     Single = 1,
-    Multi = 2
+    Multiple = 2
 }
