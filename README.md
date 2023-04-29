@@ -20,9 +20,9 @@
 ## 문제
 ## :books: 기술
 
-도구  
+:hammer: 도구  
 <img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black"> 
 <img src="https://img.shields.io/badge/visualstudio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white"> 
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">  
-OS  
+:cd: OS  
 <img src="https://img.shields.io/badge/Windows-3776AB?style=for-the-badge&logo=Windows&logoColor=white">  
