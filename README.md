@@ -20,7 +20,7 @@
 ## 문제
 ## 기술
 
-환경
-<img src="https://img.shields.io/badge/Unity-3776AB?style=for-the-badge&logo=Unity&logoColor=white">
-OS
-<img src="https://img.shields.io/badge/Windows-3776AB?style=for-the-badge&logo=Windows&logoColor=white">
+환경 
+<img src="https://img.shields.io/badge/Unity-3776AB?style=for-the-badge&logo=Unity&logoColor=white">  
+OS 
+<img src="https://img.shields.io/badge/Windows-3776AB?style=for-the-badge&logo=Windows&logoColor=white">  
