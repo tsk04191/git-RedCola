@@ -19,4 +19,4 @@
 ## 환경
 
 <img src="https://img.shields.io/badge/Unity-3776AB?style=for-the-badge&logo=Unity&logoColor=white">
-윈도우
+<img src="https://img.shields.io/badge/Windows-3776AB?style=for-the-badge&logo=Windows&logoColor=white">
