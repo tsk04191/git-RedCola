@@ -18,7 +18,7 @@
 
 
 ## 문제
-## 기술
+## :books: 기술
 
 도구  
 <img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black"> 
