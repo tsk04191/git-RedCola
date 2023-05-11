@@ -14,7 +14,7 @@ public class classicManager : MonoBehaviour
     private void Awake()
     {
         GM = GameObject.Find("gameManager");
-        gameObject.GetComponent<sysMenu>()._sysLang = _classicLang;
+        GameObject.Find("objCavGroup").GetComponent<sysMenu>()._sysLang = _classicLang;
     }
 
     private void Start()

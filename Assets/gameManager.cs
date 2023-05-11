@@ -47,6 +47,7 @@ public class gameManager : MonoBehaviour
 
         LoadScreen();
         LoadPreferencesPref();
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
@@ -109,15 +110,9 @@ public class gameManager : MonoBehaviour
     }
 }
 
-public enum unitDamageType
+public enum playerState
 {
-    None = 1,
-    Physics = 2,
-    Mental = 4
-}
-
-public enum unitAttackType
-{
-    Single = 1,
-    Multiple = 2
+    inRoom,
+    inPlayBattle,
+    inPlayEvent
 }
