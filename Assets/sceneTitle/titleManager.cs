@@ -1,111 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class titleManager : MonoBehaviour
 {
-    private GameObject GM;
-    private gameManager gM() { return GM.GetComponent<gameManager>(); }
+    [Header("Canvas Groups")]
+    [SerializeField] private List<Canvas> cavPageGroup;
 
-    private sysTitlePage _titlePage;
+    [Header("Button Groups")]
+    [SerializeField] private List<Button> imgBtPlayGroup;
+    [SerializeField] private List<Button> imgBtSetGroup;
+    [SerializeField] private List<Button> imgBtShopGroup;
+    [SerializeField] private List<Button> imgBtQuitGroup;
 
-    [Header("button on mouse to reveal selected img")]
-    public List<Image> imgButtonTitle;
-    public List<Image> imgButtonPreferences;
-
-    [Header("page in title scene")]
-    public List<Canvas> cavPageTitle;
-    public List<Canvas> cavPagePreferences;
-
-    [Header("preferances set")]
-    [SerializeField] private Image imgFullScreen;
-    [SerializeField] private Text txtScreenSize;
-
-    [Space(5f)]
-    [SerializeField] private Image imgButtonFullScreen;
-    [SerializeField] private Image imgButtonScreenSizeDown;
-    [SerializeField] private Image imgButtonScreenSizeUp;
-
-    [Space(5f)]
-    [SerializeField] private Image imgButtonLangDown;
-    [SerializeField] private Image imgButtonLangUp;
-
-    [Header("etc button")]
-    [SerializeField] private Image imgButtonClassic;
-
-    [Header("language")]
-    [SerializeField] private sysLang[] _titleLang;
-
-    private void Awake()
-    {
-        GM = GameObject.Find("gameManager");
-
-        _titlePage = new sysTitlePage(imgButtonTitle, cavPageTitle);
-    }
+    [Header("Info Groups")]
+    [SerializeField] private List<TextMeshProUGUI> txtInfoGroup;
 
     private void Start()
     {
-        _titlePage.SetButtonTitle();
-
-        gM().LoadPreferences(_titleLang, imgButtonPreferences, cavPagePreferences, txtScreenSize, imgButtonFullScreen, imgFullScreen, imgButtonScreenSizeDown, imgButtonScreenSizeUp, imgButtonLangDown, imgButtonLangUp);
-        gM().LoadLang(_titleLang);
-
-        imgButtonClassic.GetComponent<Button>().onClick.AddListener(() => gM().DoOpenSecne(1));
-    }
-}
-
-public class sysTitlePage
-{
-    private List<Image> img;
-    private List<Canvas> cav;
-
-    public sysTitlePage(List<Image> i, List<Canvas> c)
-    {
-        img = i;
-        cav = c;
+        DoAddBt();
     }
 
-    public void SetButtonTitle()
+    private void DoBtGroupOpen(Canvas c, bool b)
     {
-        img[0].GetComponent<Button>().onClick.AddListener(() => OnClickButtonTitle(img[0], cav[0]));
-        img[1].GetComponent<Button>().onClick.AddListener(() => OnClickButtonTitle(img[1], cav[1]));
-        img[2].GetComponent<Button>().onClick.AddListener(() => OnClickButtonTitle(img[2], cav[2]));
-        img[3].GetComponent<Button>().onClick.AddListener(() => OnClickButtonTitle(img[3], cav[3]));
+        c.gameObject.SetActive(b);
     }
 
-    private void OnClickButtonTitle(Image i, Canvas c)
+    private void DoQuit()
     {
-        ConTitleSelected(i);
-        ConTitleCanvas(c);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
-    private void ConTitleSelected(Image b)
+    private void DoAddBt()
     {
-        foreach (Image i in img)
-        {
-            i.GetComponent<sysOnMousePointer>().Clicked = false;
-            i.GetComponent<sysOnMousePointer>().SetSelected(false);
+        //게임 시작 페이지 열기
+        imgBtPlayGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[1], true));
+        imgBtPlayGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], false));
 
-            if (i == b)
-            {
-                i.GetComponent<sysOnMousePointer>().Clicked = true;
-                i.GetComponent<sysOnMousePointer>().SetSelected(true);
-            }
-        }
+        //게임 시작 페이지에서 뒤로가기
+        imgBtPlayGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], true));
+        imgBtPlayGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[1], false));
+
+        //설정 페이지 열기
+        imgBtSetGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[2], true));
+        imgBtSetGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], false));
+
+        //설정 페이지에서 뒤로가기
+        imgBtSetGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], true));
+        imgBtSetGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[2], false));
+
+        //종료 페이지 열기
+        imgBtQuitGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[4], true));
+        imgBtQuitGroup[0].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], false));
+
+        //게임 종료
+        imgBtQuitGroup[2].onClick.AddListener(() => DoQuit());
+
+        //종료 페이지에서 뒤로가기
+        imgBtQuitGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[0], true));
+        imgBtQuitGroup[1].onClick.AddListener(() => DoBtGroupOpen(cavPageGroup[4], false));
     }
 
-    private void ConTitleCanvas(Canvas m)
+    public void DoLoadInfo()
     {
-        foreach (Canvas c in cav)
-        {
-            c.gameObject.SetActive(false);
-
-            if (c == m)
-            {
-                c.gameObject.SetActive(true);
-            }
-        }
+        txtInfoGroup[0].text = PlayerPrefs.GetInt("playerLV").ToString();
+        txtInfoGroup[1].text = PlayerPrefs.GetString("playerName");
     }
 }

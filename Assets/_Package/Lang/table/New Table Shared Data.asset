@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: New Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: New Table
+  m_TableCollectionNameGuidString: bf3e4eea04774cc4f92e0ac210867c2f
+  m_Entries:
+  - m_Id: 72002007040
+    m_Key: name_get
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233000366080
+    m_Key: main_bt_play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474223177728
+    m_Key: main_bt_set
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477859639296
+    m_Key: main_bt_shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 531597062144
+    m_Key: main_bt_quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731111714816
+    m_Key: main_bt_return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4097464299520
+    m_Key: main_bt_fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366835085312
+    m_Key: main_bt_lang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4637359304704
+    m_Key: main_bt_delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13546174246912
+    m_Key: main_bt_quit_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13586015940608
+    m_Key: 'main_bt_quit
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20733768462336
+    m_Key: name_check
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 6009338432701333504
+  references:
+    version: 2
+    RefIds:
+    - rid: 6009338432701333504
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1684766097189

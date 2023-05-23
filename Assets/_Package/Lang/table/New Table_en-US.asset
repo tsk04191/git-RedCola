@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: New Table_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: bf3e4eea04774cc4f92e0ac210867c2f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 72002007040
+    m_Localized: name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233000366080
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 531597062144
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 477859639296
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474223177728
+    m_Localized: Set
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731111714816
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4097464299520
+    m_Localized: FullScreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366835085312
+    m_Localized: English (US)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4637359304704
+    m_Localized: Data Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13586015940608
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13546174246912
+    m_Localized: Quit the game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20733768462336
+    m_Localized: Check
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
