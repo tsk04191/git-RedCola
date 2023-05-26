@@ -16,7 +16,7 @@ public class sysCreateData : MonoBehaviour
 
     private void Awake()
     {
-        findTM();
+        TM = GameObject.Find("titleManager");
 
         if (PlayerPrefs.GetInt("playerSet") == 1)
         {
@@ -51,10 +51,5 @@ public class sysCreateData : MonoBehaviour
         gameObject.SetActive(false);
         cavMain.gameObject.SetActive(true);
         tM().DoLoadInfo();
-    }
-
-    private void findTM()
-    {
-        TM = GameObject.Find("titleManager");
     }
 }

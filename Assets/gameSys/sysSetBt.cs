@@ -6,9 +6,12 @@ using UnityEngine.UI;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using System.Text.RegularExpressions;
+using UnityEngine.Audio;
 
 public class sysSetBt : MonoBehaviour
 {
+    private GameObject GM;
+    private audioManager aM() { return GM.transform.Find("audioManager").GetComponent<audioManager>(); }
     private List<string> langList = new List<string>();
 
     [Header("Button Groups")]
@@ -17,22 +20,30 @@ public class sysSetBt : MonoBehaviour
     [SerializeField] private List<GameObject> imgBtLangGroup;
     [SerializeField] private List<GameObject> imgBtDataGroup;
 
+    private void Awake()
+    {
+        GM = GameObject.Find("gameManager");
+    }
+
     private void Start()
     {
         DoAddBt();
         DoOpenScreenPage();
 
         setLangList();
-
     }
 
     private void DoAddBt()
     {
         //설정창의 각 페이지를 여는 기능 추가
         imgBtScreenGroup[0].GetComponent<Button>().onClick.AddListener(() => DoOpenScreenPage());
+        imgBtScreenGroup[0].GetComponent<Button>().onClick.AddListener(() => aM().DoPlayClicked(true));
         imgBtSoundGroup[0].GetComponent<Button>().onClick.AddListener(() => DoOpenSoundPage());
+        imgBtSoundGroup[0].GetComponent<Button>().onClick.AddListener(() => aM().DoPlayClicked(true));
         imgBtLangGroup[0].GetComponent<Button>().onClick.AddListener(() => DoOpenLangPage());
+        imgBtLangGroup[0].GetComponent<Button>().onClick.AddListener(() => aM().DoPlayClicked(true));
         imgBtDataGroup[0].GetComponent<Button>().onClick.AddListener(() => DoOpenDataPage());
+        imgBtDataGroup[0].GetComponent<Button>().onClick.AddListener(() => aM().DoPlayClicked(true));
 
         //화면 설정창
         //전체화면 설정
@@ -40,6 +51,13 @@ public class sysSetBt : MonoBehaviour
         //해상도 설정
         imgBtScreenGroup[2].transform.Find("imgMinus").GetComponent<Button>().onClick.AddListener(() => DoSwitchScreenSize(false));
         imgBtScreenGroup[2].transform.Find("imgPlus").GetComponent<Button>().onClick.AddListener(() => DoSwitchScreenSize(true));
+
+        //음량 설정창
+        imgBtSoundGroup[1].transform.Find("sldMaster").GetComponent<Slider>().onValueChanged.AddListener(DoSetMasterVol);
+        imgBtSoundGroup[2].transform.Find("sldBGM").GetComponent<Slider>().onValueChanged.AddListener(DoSetBGMVol);
+        imgBtSoundGroup[3].transform.Find("sldSFX").GetComponent<Slider>().onValueChanged.AddListener(DoSetSFXVol);
+        //설정된 음량값 불러오기
+        SetSldSoundPref();
 
         //언어 설정창
         //언어 설정
@@ -56,6 +74,7 @@ public class sysSetBt : MonoBehaviour
         conSetSelected(0);
 
         conScreenPage(true);
+        conSoundPage(false);
         conLangPage(false);
         conDataPage(false);
     }
@@ -65,6 +84,7 @@ public class sysSetBt : MonoBehaviour
         conSetSelected(1);
 
         conScreenPage(false);
+        conSoundPage(true);
         conLangPage(false);
         conDataPage(false);
     }
@@ -74,6 +94,7 @@ public class sysSetBt : MonoBehaviour
         conSetSelected(2);
 
         conScreenPage(false);
+        conSoundPage(false);
         conLangPage(true);
         conDataPage(false);
     }
@@ -83,6 +104,7 @@ public class sysSetBt : MonoBehaviour
         conSetSelected(3);
 
         conScreenPage(false);
+        conSoundPage(false);
         conLangPage(false);
         conDataPage(true);
     }
@@ -123,6 +145,13 @@ public class sysSetBt : MonoBehaviour
         imgBtScreenGroup[2].transform.Find("txtSize").GetComponent<TextMeshProUGUI>().text = Screen.width + " * " + Screen.height;
     }
 
+    private void conSoundPage(bool b)
+    {
+        imgBtSoundGroup[1].SetActive(b);
+        imgBtSoundGroup[2].SetActive(b);
+        imgBtSoundGroup[3].SetActive(b);
+    }
+
     private void conLangPage(bool b)
     {
         imgBtLangGroup[1].SetActive(b);
@@ -141,6 +170,8 @@ public class sysSetBt : MonoBehaviour
     {
         g.SetActive(!Screen.fullScreen);
         Screen.fullScreen = !Screen.fullScreen;
+
+        aM().DoPlayClicked(true);
     }
 
     private void DoSwitchScreenSize(bool b)
@@ -152,11 +183,17 @@ public class sysSetBt : MonoBehaviour
         {
             targetW = (Screen.width / w - 20) * w;
             targetH = (Screen.height / h - 20) * h;
+            aM().DoPlayClicked(true);
         }
         else if (Screen.width < 1920 && b)
         {
             targetW = (Screen.width / w + 20) * w;
             targetH = (Screen.height / h + 20) * h;
+            aM().DoPlayClicked(true);
+        }
+        else
+        {
+            aM().DoPlayClicked(false);
         }
 
         Screen.SetResolution(targetW, targetH, Screen.fullScreen);
@@ -166,6 +203,7 @@ public class sysSetBt : MonoBehaviour
     private void DoDeleteData()
     {
         PlayerPrefs.DeleteAll();
+        aM().DoPlayClicked(true);
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -187,10 +225,18 @@ public class sysSetBt : MonoBehaviour
         if (i != 0 && !b)
         {
             i--;
+
+            aM().DoPlayClicked(true);
         }
         else if (i != langList.Count - 1 && b)
         {
             i++;
+
+            aM().DoPlayClicked(true);
+        }
+        else
+        {
+            aM().DoPlayClicked(false);
         }
 
         loadLang(langList[i]);
@@ -222,5 +268,29 @@ public class sysSetBt : MonoBehaviour
                 LocalizationSettings.SelectedLocale = aLocale;
             }
         }
+    }
+
+    private void DoSetMasterVol(float v)
+    {
+        PlayerPrefs.SetFloat("volMaster", v);
+        aM().DoSetVolumeMaster(v);
+    }
+
+    private void DoSetBGMVol(float v)
+    {
+        PlayerPrefs.SetFloat("volBGM", v);
+        aM().DoSetVolumeBGM(v);
+    }
+
+    private void DoSetSFXVol(float v)
+    {
+        PlayerPrefs.SetFloat("volSFX", v);
+    }
+
+    private void SetSldSoundPref()
+    {
+        imgBtSoundGroup[1].transform.Find("sldMaster").GetComponent<Slider>().value = PlayerPrefs.GetFloat("volMaster");
+        imgBtSoundGroup[2].transform.Find("sldBGM").GetComponent<Slider>().value = PlayerPrefs.GetFloat("volBGM");
+        imgBtSoundGroup[3].transform.Find("sldSFX").GetComponent<Slider>().value = PlayerPrefs.GetFloat("volSFX");
     }
 }
